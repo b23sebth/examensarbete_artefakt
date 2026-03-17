@@ -1,6 +1,9 @@
 const createElement = document.getElementById("createElement");
+const addFragment = document.getElementById("addFragment");
+const fragment = new DocumentFragment();
 
 createElement.addEventListener("click", createDiv);
+addFragment.addEventListener("click", addElements)
 
 function createDiv() {
 	console.log("click");
@@ -11,5 +14,10 @@ function createDiv() {
 
 	newDiv.appendChild(newContent);
 
-	document.body.appendChild(newDiv);
+	fragment.appendChild(newDiv);
 }
+
+function addElements() {
+	document.body.appendChild(fragment);
+}
+
