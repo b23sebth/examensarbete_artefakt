@@ -18,6 +18,10 @@ function createDiv() {
 }
 
 function addElements() {
-	document.body.appendChild(fragment);
+	if (fragment.childElementCount > 0) {
+    document.body.appendChild(fragment);
+	} else {
+    console.log("Fragment empty");
+	}
 }
 
