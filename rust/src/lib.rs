@@ -1,7 +1,7 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
-use maud::html;
+use web_sys;
 
 #[wasm_bindgen]
 extern "C" {
@@ -14,10 +14,13 @@ pub fn greet(name: &str) {
 }
 
 #[wasm_bindgen]
-pub fn get_element() -> String {
-    let markup = html! {
-        p { "This is a paragraph!" }
-    };
-    return markup.into_string();
+pub fn main() {
+    let window = web_sys::window().unwrap();
+    let document = window.document().unwrap();
+    let body = document.body().unwrap();
+
+    let h1 = document.create_element("h1").unwrap();
+    h1.set_text_content(Some("It works"));
+    body.append_child(&h1).unwrap();
 }
 

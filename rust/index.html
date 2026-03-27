@@ -6,11 +6,10 @@
 	</head>
 	<body>
 		<script type="module">
-      import init, { get_element } from "./pkg/rust.js";
+      import init, { main } from "./pkg/rust.js";
 
       init().then(() => {
-        const elementString = get_element();
-        document.body.innerHTML = elementString; //TODO: InnerHTML är inte ett bra sätt. Gör det säkrare!
+        main();
       });
 		</script>
 	</body>
