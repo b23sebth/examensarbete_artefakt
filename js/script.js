@@ -3,16 +3,19 @@ const addFragment = document.getElementById("addFragment");
 const fragment = new DocumentFragment();
 const submitBtn = document.getElementById("submit-btn");
 
-let test;
-
-createElement.addEventListener("click", createDiv);
-addFragment.addEventListener("click", addElements);
+let numberOfElements;
 
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
   let elementOptions = new FormData(document.getElementById("element-options"));
-  test = elementOptions.get("numberOfElements");
+  numberOfElements = elementOptions.get("numberOfElements");
+
+  for(i = 0; i <=numberOfElements; i++) {
+    createDiv()
+  }
+
+  addElements();
 });
 
 function createDiv() {
