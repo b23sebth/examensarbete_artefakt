@@ -20,7 +20,12 @@ pub fn main() {
     let body = document.body().unwrap();
 
     let h1 = document.create_element("h1").unwrap();
-    h1.set_text_content(Some("It works"));
+    h1.set_text_content(Some("Create Elements"));
+
+    let button1 = document.create_element("button").unwrap();
+    button1.set_text_content(Some("1+ element"));
+
     body.append_child(&h1).unwrap();
+    body.append_child(&button1).unwrap();
 }
 
