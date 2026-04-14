@@ -1,9 +1,19 @@
 const createElement = document.getElementById("createElement");
 const addFragment = document.getElementById("addFragment");
 const fragment = new DocumentFragment();
+const submitBtn = document.getElementById("submit-btn");
+
+let test;
 
 createElement.addEventListener("click", createDiv);
-addFragment.addEventListener("click", addElements)
+addFragment.addEventListener("click", addElements);
+
+submitBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  let elementOptions = new FormData(document.getElementById("element-options"));
+  test = elementOptions.get("numberOfElements");
+});
 
 function createDiv() {
 	console.log("click");
