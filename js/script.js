@@ -12,22 +12,30 @@ submitBtn.addEventListener("click", function(event) {
   numberOfElements = elementOptions.get("numberOfElements");
 
   for(i = 0; i <=numberOfElements; i++) {
-    createDiv()
+    createDiv();
+    createParagraph();
   }
 
   addElements();
 });
 
 function createDiv() {
-	console.log("click");
+  console.log("Creating Div");
 
 	const newDiv = document.createElement("div");
-
 	const newContent = document.createTextNode("New content");
 
 	newDiv.appendChild(newContent);
-
 	fragment.appendChild(newDiv);
+}
+
+function createParagraph() {
+  console.log("Creating paragraph");
+  const newParagraph = document.createElement("p");
+  const newContent = document.createTextNode("This is a paragraph");
+
+  newParagraph.appendChild(newContent);
+  fragment.appendChild(newParagraph);
 }
 
 function addElements() {
