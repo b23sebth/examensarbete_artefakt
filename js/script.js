@@ -13,29 +13,32 @@ submitBtn.addEventListener("click", function(event) {
 
   for(let i = 0; i <=numberOfElements; i++) {
     createDiv();
-    createParagraph();
   }
 
   addElements();
 });
 
-function createDiv() {
+function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan innehålla flera olika saker?
   console.log("Creating Div");
 
 	const newDiv = document.createElement("div");
 	const newContent = document.createTextNode("New content");
 
 	newDiv.appendChild(newContent);
+  newDiv.appendChild(createParagraph());
+
 	fragment.appendChild(newDiv);
 }
 
 function createParagraph() {
   console.log("Creating paragraph");
+
   const newParagraph = document.createElement("p");
   const newContent = document.createTextNode("This is a paragraph");
 
   newParagraph.appendChild(newContent);
-  fragment.appendChild(newParagraph);
+
+  return newParagraph;
 }
 
 function addElements() {
