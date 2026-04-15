@@ -22,9 +22,8 @@ function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan
   console.log("Creating Div");
 
 	const newDiv = document.createElement("div");
-	const newContent = document.createTextNode("New content");
 
-	newDiv.appendChild(newContent);
+  newDiv.appendChild(createHeading(1));
   newDiv.appendChild(createParagraph());
 
 	fragment.appendChild(newDiv);
@@ -39,6 +38,17 @@ function createParagraph() {
   newParagraph.appendChild(newContent);
 
   return newParagraph;
+}
+
+function createHeading(heading) {
+  console.log("Creating heading")
+
+  const newHeading = document.createElement(`h${heading}`);
+  const newContent = document.createTextNode("This is a heading!");
+
+  newHeading.appendChild(newContent);
+
+  return newHeading;
 }
 
 function addElements() {
