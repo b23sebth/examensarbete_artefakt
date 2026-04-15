@@ -11,7 +11,7 @@ submitBtn.addEventListener("click", function(event) {
   let elementOptions = new FormData(document.getElementById("element-options"));
   numberOfElements = elementOptions.get("numberOfElements");
 
-  for(i = 0; i <=numberOfElements; i++) {
+  for(let i = 0; i <=numberOfElements; i++) {
     createDiv();
     createParagraph();
   }
