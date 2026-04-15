@@ -11,7 +11,7 @@ submitBtn.addEventListener("click", function(event) {
   let elementOptions = new FormData(document.getElementById("element-options"));
   numberOfElements = elementOptions.get("numberOfElements");
 
-  for(let i = 0; i <=numberOfElements; i++) {
+  for(let i = 0; i < numberOfElements; i++) {
     createDiv();
   }
 
@@ -25,6 +25,7 @@ function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan
 
   newDiv.appendChild(createHeading(1));
   newDiv.appendChild(createParagraph());
+  newDiv.appendChild(createIMG());
 
 	fragment.appendChild(newDiv);
 }
@@ -49,6 +50,14 @@ function createHeading(heading) {
   newHeading.appendChild(newContent);
 
   return newHeading;
+}
+
+function createIMG() {
+  console.log("Creating random image")
+  let img = document.createElement("img");
+  img.setAttribute("src", "https://picsum.photos/300"); //Går att sätta seed sen också
+
+  return img;
 }
 
 function addElements() {
