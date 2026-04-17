@@ -20,6 +20,17 @@ submitBtn.addEventListener("click", function(event) {
   addElements();
 });
 
+//Returns up to n *amount* sentences with normal distribution.
+function getRandomSentence(amount) {
+  let randomSentence = "";
+
+  for (let i = 0; i < Math.round(Math.random() * amount); i++) {
+    randomSentence += generate_sentence(true,true,true,true,true,true,true,true,true,true,true);
+  }
+
+  return randomSentence;
+}
+
 function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan innehålla flera olika saker?
   console.log("Creating Div");
 
@@ -35,15 +46,8 @@ function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan
 function createParagraph() {
   console.log("Creating paragraph");
 
-  let randomSentence = "";
-
-  //Skapar 25 slumpmässiga meningar.
-  for (let i = 0; i < Math.round(Math.random() * 25); i++) {
-    randomSentence += generate_sentence(true,true,true,true,true,true,true,true,true,true,true);
-  }
-
   const newParagraph = document.createElement("p");
-  const newContent = document.createTextNode(randomSentence);
+  const newContent = document.createTextNode(getRandomSentence(25));
 
   newParagraph.appendChild(newContent);
 
@@ -54,7 +58,7 @@ function createHeading(heading) {
   console.log("Creating heading")
 
   const newHeading = document.createElement(`h${heading}`);
-  const newContent = document.createTextNode(generate_sentence(true,true,true,true,true,true,true,true,true,true,true));
+  const newContent = document.createTextNode(getRandomSentence(1));
   newHeading.appendChild(newContent);
 
   return newHeading;
