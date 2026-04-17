@@ -54,8 +54,10 @@ function createHeading(heading) {
 
 function createIMG() {
   console.log("Creating random image")
+
   let img = document.createElement("img");
-  img.setAttribute("src", "https://picsum.photos/300"); //Går att sätta seed sen också
+  let seed = Math.random();
+  img.setAttribute("src", `https://picsum.photos/seed/${seed}/300`);
 
   return img;
 }
