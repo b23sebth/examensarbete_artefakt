@@ -1,3 +1,5 @@
+Math.setSeed(5);
+
 const createElement = document.getElementById("createElement");
 const addFragment = document.getElementById("addFragment");
 const fragment = new DocumentFragment();
