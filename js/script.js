@@ -1,5 +1,3 @@
-Math.setSeed(5);
-
 const createElement = document.getElementById("createElement");
 const addFragment = document.getElementById("addFragment");
 const fragment = new DocumentFragment();
@@ -10,8 +8,12 @@ let numberOfElements;
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
-  let elementOptions = new FormData(document.getElementById("element-options"));
-  numberOfElements = elementOptions.get("numberOfElements");
+  const elementOptions = new FormData(document.getElementById("element-options"));
+
+  const numberOfElements = elementOptions.get("numberOfElements");
+  const seed = Number(elementOptions.get("seed"));
+
+  Math.setSeed(seed);
 
   for(let i = 0; i < numberOfElements; i++) {
     createDiv();
