@@ -35,8 +35,15 @@ function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan
 function createParagraph() {
   console.log("Creating paragraph");
 
+  let randomSentence = "";
+
+  //Skapar 25 slumpmässiga meningar.
+  for (let i = 0; i < Math.round(Math.random() * 25); i++) {
+    randomSentence += generate_sentence(true,true,true,true,true,true,true,true,true,true,true);
+  }
+
   const newParagraph = document.createElement("p");
-  const newContent = document.createTextNode("This is a paragraph");
+  const newContent = document.createTextNode(randomSentence);
 
   newParagraph.appendChild(newContent);
 
@@ -47,8 +54,7 @@ function createHeading(heading) {
   console.log("Creating heading")
 
   const newHeading = document.createElement(`h${heading}`);
-  const newContent = document.createTextNode("This is a heading!");
-
+  const newContent = document.createTextNode(generate_sentence(true,true,true,true,true,true,true,true,true,true,true));
   newHeading.appendChild(newContent);
 
   return newHeading;
