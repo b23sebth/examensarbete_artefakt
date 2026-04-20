@@ -57,8 +57,10 @@ function createParagraph() {
   return newParagraph;
 }
 
-function createHeading(heading) {
-  console.log("Creating heading")
+function createHeading() {
+  console.log("Creating heading");
+
+  const heading = getRandomInt(1,7);
 
   const newHeading = document.createElement(`h${heading}`);
   const newContent = document.createTextNode(getRandomSentence(1));
