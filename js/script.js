@@ -22,6 +22,13 @@ submitBtn.addEventListener("click", function(event) {
   addElements();
 });
 
+// getRandomIntInclusive from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomIntInclusive(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
 //Returns up to n *amount* sentences with normal distribution.
 function getRandomSentence(amount) {
   let randomSentence = "";
