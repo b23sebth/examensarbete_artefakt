@@ -3,6 +3,14 @@ const addFragment = document.getElementById("addFragment");
 const fragment = new DocumentFragment();
 const submitBtn = document.getElementById("submit-btn");
 
+// Array so created element can be randomly chosen. 
+const elements = [
+  createHeading,
+  createParagraph,
+  createIMG,
+  createTable
+]
+
 let numberOfElements;
 
 submitBtn.addEventListener("click", function(event) {
@@ -33,15 +41,14 @@ function getRandomSentence(amount) {
   return randomSentence;
 }
 
-function createDiv() {  //TODO: Fixa så att diven skapar flera olika random element samt antal.
+function createDiv() {
   console.log("Creating Div");
 
 	const newDiv = document.createElement("div");
 
-  newDiv.appendChild(createHeading(1));
-  newDiv.appendChild(createParagraph());
-  newDiv.appendChild(createIMG());
-  newDiv.appendChild(createTable());
+  for (let i = 0; i < getRandomInt(1,11); i++) {
+    newDiv.appendChild(elements[getRandomInt(0, 4)]());
+  }
 
 	fragment.appendChild(newDiv);
 }
