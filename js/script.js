@@ -22,13 +22,6 @@ submitBtn.addEventListener("click", function(event) {
   addElements();
 });
 
-// getRandomIntInclusive from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-function getRandomIntInclusive(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-}
-
 //Returns up to n *amount* sentences with normal distribution.
 function getRandomSentence(amount) {
   let randomSentence = "";
@@ -81,11 +74,11 @@ function createTable() {
   const newTable = document.createElement("table");
   newTable.createTBody();
 
-  for (let i = 0; i < getRandomIntInclusive(1, 100); i++) {
-    const tr = newTable.insertRow(getRandomIntInclusive(0, i)); //Inserts row at random location in table.
+  for (let i = 0; i < getRandomInt(1, 101); i++) {
+    const tr = newTable.insertRow(getRandomInt(0, i + 1)); //Inserts row at random location in table.
 
-    for (let i2 = 0; i2 < getRandomIntInclusive(1, 20); i2++) {
-      const td = tr.insertCell(getRandomIntInclusive(0, i2));
+    for (let i2 = 0; i2 < getRandomInt(1, 21); i2++) {
+      const td = tr.insertCell(getRandomInt(0, i2 + 1));
       td.appendChild(document.createTextNode(randomword(noun)));
     }
   }
