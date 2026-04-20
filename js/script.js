@@ -40,7 +40,7 @@ function getRandomSentence(amount) {
   return randomSentence;
 }
 
-function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan innehålla flera olika saker?
+function createDiv() {  //TODO: Fixa så att diven skapar flera olika random element samt antal.
   console.log("Creating Div");
 
 	const newDiv = document.createElement("div");
@@ -48,6 +48,7 @@ function createDiv() {  //TODO: Skriv om till switch-statement så att diven kan
   newDiv.appendChild(createHeading(1));
   newDiv.appendChild(createParagraph());
   newDiv.appendChild(createIMG());
+  newDiv.appendChild(createTable());
 
 	fragment.appendChild(newDiv);
 }
@@ -71,6 +72,25 @@ function createHeading(heading) {
   newHeading.appendChild(newContent);
 
   return newHeading;
+}
+
+// Creates a table with random amount of rows and cells
+function createTable() {
+  console.log("Creating table");
+  
+  const newTable = document.createElement("table");
+  newTable.createTBody();
+
+  for (let i = 0; i < getRandomIntInclusive(1, 100); i++) {
+    const tr = newTable.insertRow(getRandomIntInclusive(0, i)); //Inserts row at random location in table.
+
+    for (let i2 = 0; i2 < getRandomIntInclusive(1, 20); i2++) {
+      const td = tr.insertCell(getRandomIntInclusive(0, i2));
+      td.appendChild(document.createTextNode(randomword(noun)));
+    }
+  }
+
+  return newTable;
 }
 
 function createIMG() {
