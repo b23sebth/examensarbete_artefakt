@@ -12,19 +12,49 @@
     <script src ="script.js" defer></script>
 	</head>
 	<body>
-    <form method="get" id="element-options">
-      <h1>JavaScript Options</h1>
+    <div id="config">
+      
+      <form method="get" id="element-options">
+        <h1>JavaScript Options</h1>
 
-      <div>
-        <label for="numberOfElements">Number of elements to create:</label>
-        <input type="number" name="numberOfElements" value="10"/>
+        <div>
+          <label for="numberOfElements">Number of elements to create:</label>
+          <input type="number" name="numberOfElements" value="10"/>
 
-        <label for="setSeed">Seed used:</label>
-        <input id ="setSeed" type="number" name="seed" value="1"/>
+          <label for="setSeed">Seed used:</label>
+          <input id ="setSeed" type="number" name="seed" value="1"/>
 
-        <button type="submit" id="submit-btn">Generate</button>
+          <button type="submit" id="submit-btn">Generate</button>
+        </div>
+
+      </form>
+
+      <div class="stats">
+        <h1>Stats</h1>
+
+        <table>
+          <tr>
+            <th>Elements Created</th>
+            <th>Seed used</th>
+            <th>Time taken</th>
+          </tr>
+
+          <tr>
+            <td>MockData1</td>
+            <td>MockData2</td>
+            <td>MockData3</td>
+          </tr>
+
+          <tr>
+            <td>MockData4</td>
+            <td>MockData5</td>
+            <td>MockData6</td>
+          </tr>
+        </table>
+
+        <button type="button">Download data</button>
       </div>
 
-    </form>
+    </div>
 	</body>
 </html>

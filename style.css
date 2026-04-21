@@ -11,6 +11,20 @@
   --fallback-font: Arial;
 }
 
+#config {
+  display: flex;
+  flex-direction: row;
+}
+
+.stats {
+  background-color: var(--light-accent-color);
+  margin: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+}
+
 body {
   background-color: var(--light-bg-color);
   font-family: var(--primary-font), var(--fallback-font);
