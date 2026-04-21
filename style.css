@@ -14,24 +14,50 @@
 #config {
   display: flex;
   flex-direction: row;
+
+  & > div, form {margin: 10px;}
+
+  & h1 {color: var(--dark-accent-color);}
 }
 
 .stats {
   background-color: var(--light-accent-color);
-  margin: 10px;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 5px;
   width: 100%;
 }
 
+.content {
+  background-color: var(--medium-bg-color);
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & > p {
+    background-color: var(--light-bg-color);
+    color: #FF66B9;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 350px;
+    height: fit-content;
+    font-weight: 500;
+  }
+
+  & > h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-accent-color);
+  }
+}
+
 body {
   background-color: var(--light-bg-color);
   font-family: var(--primary-font), var(--fallback-font);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: var(--dark-accent-color);
 }
 
 button {
@@ -52,8 +78,6 @@ button:hover {
 
 form {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   border-radius: 5px;
   background-color: var(--light-accent-color);
@@ -63,9 +87,9 @@ form {
   box-sizing: border-box;
 
   & > div {
-    margin: 10px;
     display: flex;
     flex-direction: column;
+    align-items: start;
   }
 
   & input[type=number] {
@@ -77,3 +101,4 @@ form {
     appearance: textfield;
   }
 }
+

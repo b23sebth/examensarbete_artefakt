@@ -45,6 +45,7 @@ function createDiv() {
   console.log("Creating Div");
 
 	const newDiv = document.createElement("div");
+  newDiv.className = "content";
 
   for (let i = 0; i < getRandomInt(1,11); i++) {
     newDiv.appendChild(elements[getRandomInt(0, 4)]());
