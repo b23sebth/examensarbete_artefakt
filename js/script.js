@@ -70,8 +70,15 @@ function createHeading() {
 
   const heading = getRandomInt(1,7);
 
+  let textString = getRandomSentence(1);
+
+  while (!textString) {
+    textString = getRandomSentence(1);
+  }
+
+  const newContent = document.createTextNode(textString);
   const newHeading = document.createElement(`h${heading}`);
-  const newContent = document.createTextNode(getRandomSentence(1));
+
   newHeading.appendChild(newContent);
 
   return newHeading;
