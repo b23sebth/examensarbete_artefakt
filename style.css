@@ -1,16 +1,21 @@
 :root {
-  --primary-bg-color: #FFF0F1;
-  --darker-accent-color: #A7ABDE;
+  --light-bg-color: #FFF0F1;
+  --medium-accent-color: #FFD6EE;
+  --dark-bg-color: #FFA5D6;
+
+  --light-accent-color: #ECD2E0;
+  --medium-accent-color: #CED1F8;
+  --dark-accent-color: #A7ABDE;
 
   --primary-font: Montserrat;
   --fallback-font: Arial;
 }
 
 body {
-  background-color: var(--primary-bg-color);
+  background-color: var(--light-bg-color);
   font-family: var(--primary-font), var(--fallback-font);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: red;
+  color: var(--dark-accent-color);
 }
