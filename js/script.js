@@ -88,12 +88,24 @@ function createTable() {
   console.log("Creating table");
   
   const newTable = document.createElement("table");
-  newTable.createTBody();
+  const numberofColumns = getRandomInt(2, 11)
+  const thead = newTable.createTHead();
+  const tbody = newTable.createTBody();
 
-  for (let i = 0; i < getRandomInt(1, 101); i++) {
-    const tr = newTable.insertRow(getRandomInt(0, i + 1)); //Inserts row at random location in table.
+  let tr = thead.insertRow();
 
-    for (let i2 = 0; i2 < getRandomInt(1, 21); i2++) {
+  for (let i = 0; i < numberofColumns; i++) {
+    const td = tr.insertCell(getRandomInt(0, i +1));
+    const th = document.createElement("th");
+
+    th.appendChild(document.createTextNode(randomword(noun)));
+    td.replaceWith(th);
+  }
+
+  for (let i = 0; i < getRandomInt(1, 25); i++) {
+    tr = tbody.insertRow(getRandomInt(0, i + 1)); //Inserts row at random location in table.
+
+    for (let i2 = 0; i2 < numberofColumns; i2++) {
       const td = tr.insertCell(getRandomInt(0, i2 + 1));
       td.appendChild(document.createTextNode(randomword(noun)));
     }
