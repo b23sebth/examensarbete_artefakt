@@ -44,6 +44,7 @@ function getRandomSentence(amount) {
   return randomSentence;
 }
 
+// Fills a div with 1-10 random elements.
 function createDiv() {
   console.log("Creating Div");
 
@@ -54,6 +55,7 @@ function createDiv() {
     newDiv.appendChild(elements[getRandomInt(0, 4)]());
   }
 
+  //TODO: Borde returnera en div likt andra element. Justera fragment borde göras i eventlyssnaren.
 	fragment.appendChild(newDiv);
 }
 
@@ -112,7 +114,8 @@ function createIMG() {
 
 function addElements() {
 	if (fragment.childElementCount > 0) {
-    document.body.appendChild(fragment);
+    const div = document.getElementById("cards");
+    div.appendChild(fragment);
 	} else {
     console.log("Fragment empty");
 	}
