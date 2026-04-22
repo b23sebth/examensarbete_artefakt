@@ -16,15 +16,18 @@ let numberOfElements;
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
+  let iteration = 1;
+
   const elementOptions = new FormData(document.getElementById("element-options"));
 
   const numberOfElements = elementOptions.get("numberOfElements");
   const seed = Number(elementOptions.get("seed"));
 
-  Math.setSeed(seed);
 
   for(let i = 0; i < numberOfElements; i++) {
+    Math.setSeed(seed + iteration);
     createDiv();
+    iteration++;
   }
 
   addElements();
@@ -34,7 +37,7 @@ submitBtn.addEventListener("click", function(event) {
 function getRandomSentence(amount) {
   let randomSentence = "";
 
-  for (let i = 0; i < Math.round(Math.random() * amount); i++) {
+  for (let i = 0; i < getRandomInt(0, amount + 1); i++) {
     randomSentence += generate_sentence(true,true,true,true,true,true,true,true,true,true,true);
   }
 
@@ -70,13 +73,7 @@ function createHeading() {
 
   const heading = getRandomInt(1,7);
 
-  let textString = getRandomSentence(1);
-
-  while (!textString) {
-    textString = getRandomSentence(1);
-  }
-
-  const newContent = document.createTextNode(textString);
+  const newContent = document.createTextNode(getRandomSentence(1));
   const newHeading = document.createElement(`h${heading}`);
 
   newHeading.appendChild(newContent);
