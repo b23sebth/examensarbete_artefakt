@@ -2,6 +2,8 @@ const createElement = document.getElementById("createElement");
 const addFragment = document.getElementById("addFragment");
 const fragment = new DocumentFragment();
 const submitBtn = document.getElementById("submit-btn");
+const clearDataButton = document.getElementById("clear-data-btn");
+const downloadDataButton = document.getElementById("download-data-btn");
 
 // Array so created element can be randomly chosen. 
 const elements = [
@@ -31,6 +33,14 @@ submitBtn.addEventListener("click", function(event) {
   }
 
   addElements();
+});
+
+clearDataButton.addEventListener("click", function() {
+  console.log("Clear data button pressed.")
+});
+
+downloadDataButton.addEventListener("click", function() {
+  console.log("Download data button pressed.")
 });
 
 //Returns up to n *amount* sentences with normal distribution.
