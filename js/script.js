@@ -75,7 +75,7 @@ function createHeading() {
 
   const heading = getRandomInt(1,7);
 
-  const newContent = document.createTextNode(getRandomSentence(1));
+  const newContent = document.createTextNode(randomword(noun));
   const newHeading = document.createElement(`h${heading}`);
 
   newHeading.appendChild(newContent);
