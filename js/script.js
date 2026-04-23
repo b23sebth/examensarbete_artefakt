@@ -55,12 +55,22 @@ downloadDataButton.addEventListener("click", function() {
 clearElementsButton.addEventListener("click", function() {
   console.log("Clear elements button pressed.")
 
-  const elements = document.getElementsByClassName("content");
+  const cards = document.getElementById("cards");
 
-  //Loops through elements backwards.
-  for (let i = elements.length -1; i >= 0; i--) {
-    elements[i].remove();
+  let i = 1;
+  while (cards.firstChild) {
+    cards.removeChild(cards.firstChild);
+    console.log("Removed: ", i);
+    i++;
   }
+
+  //Den här implementationen tar mycket längre tid, vad beror det på? Kanske kan vara intressant för att jämföra Rust/JS ytterliggare.
+  //Loops through elements backwards.
+  //const elements = document.getElementsByClassName("content");
+  //for (let i = elements.length -1; i >= 0; i--) {
+    //elements[i].remove();
+    //console.log("Removed: ", i);
+  //}
 });
 
 function addStatsData(run, numberOfElements, seed, startTime, endTime) {
