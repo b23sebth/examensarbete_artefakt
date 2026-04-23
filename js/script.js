@@ -63,10 +63,34 @@ clearElementsButton.addEventListener("click", function() {
   }
 });
 
-function addStatsData(run, numberOfElements1, seed, startTime, endTime) {
+function addStatsData(run, numberOfElements, seed, startTime, endTime) {
   const timeTaken = startTime.until(endTime);
+  const table = document.getElementById("stats-table");
+  const tbody = table.querySelector("tbody");
+  const tr = tbody.insertRow();
+
   console.log("Temporal: ", timeTaken);
   console.log("Run: ", run);
+
+  let td;
+  let data;
+
+  //TODO: Lös det här bättre. För mycket upprepning..
+  td = tr.insertCell();
+  data = document.createTextNode(run);
+  td.appendChild(data);
+
+  td = tr.insertCell();
+  data = document.createTextNode(numberOfElements);
+  td.appendChild(data);
+
+  td = tr.insertCell();
+  data = document.createTextNode(seed);
+  td.appendChild(data);
+
+  td = tr.insertCell();
+  data = document.createTextNode(timeTaken);
+  td.appendChild(data);
 }
 
 //Returns up to n *amount* sentences with normal distribution.
