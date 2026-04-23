@@ -33,6 +33,7 @@ submitBtn.addEventListener("click", function(event) {
     Math.setSeed(seed + iteration);
     createDiv();
     iteration++;
+    console.log("Created Divs: ", i + 1);
   }
 
   addElements();
@@ -75,6 +76,8 @@ clearElementsButton.addEventListener("click", function() {
 
 function addStatsData(run, numberOfElements, seed, startTime, endTime) {
   const timeTaken = startTime.until(endTime);
+  const timeTakenMs = timeTaken.total("milliseconds");
+  const timeTakenSeconds = timeTaken.total("seconds");
   const table = document.getElementById("stats-table");
   const tbody = table.querySelector("tbody");
   const tr = tbody.insertRow();
@@ -99,7 +102,11 @@ function addStatsData(run, numberOfElements, seed, startTime, endTime) {
   td.appendChild(data);
 
   td = tr.insertCell();
-  data = document.createTextNode(timeTaken);
+  data = document.createTextNode(timeTakenSeconds);
+  td.appendChild(data);
+
+  td = tr.insertCell();
+  data = document.createTextNode(timeTakenMs);
   td.appendChild(data);
 }
 
