@@ -4,6 +4,7 @@ const fragment = new DocumentFragment();
 const submitBtn = document.getElementById("submit-btn");
 const clearDataButton = document.getElementById("clear-data-btn");
 const downloadDataButton = document.getElementById("download-data-btn");
+const clearElementsButton = document.getElementById("clear-elements-btn");
 
 // Array so created element can be randomly chosen. 
 const elements = [
@@ -24,7 +25,7 @@ submitBtn.addEventListener("click", function(event) {
 
   const elementOptions = new FormData(document.getElementById("element-options"));
 
-  const numberOfElements = elementOptions.get("numberOfElements");
+  numberOfElements = elementOptions.get("numberOfElements");
   const seed = Number(elementOptions.get("seed"));
 
 
@@ -49,6 +50,17 @@ clearDataButton.addEventListener("click", function() {
 
 downloadDataButton.addEventListener("click", function() {
   console.log("Download data button pressed.")
+});
+
+clearElementsButton.addEventListener("click", function() {
+  console.log("Clear elements button pressed.")
+
+  const elements = document.getElementsByClassName("content");
+
+  //Loops through elements backwards.
+  for (let i = elements.length -1; i >= 0; i--) {
+    elements[i].remove();
+  }
 });
 
 function addStatsData(run, numberOfElements1, seed, startTime, endTime) {
