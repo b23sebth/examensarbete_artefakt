@@ -47,6 +47,15 @@ submitBtn.addEventListener("click", function(event) {
 
 clearDataButton.addEventListener("click", function() {
   console.log("Clear data button pressed.")
+
+  const table = document.getElementById("stats-table");
+  const tbody = table.querySelector("tbody");
+
+  while (tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild);
+  }
+
+  run = 1;
 });
 
 downloadDataButton.addEventListener("click", function() {
