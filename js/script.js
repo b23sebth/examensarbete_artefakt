@@ -14,11 +14,13 @@ const elements = [
 ]
 
 let numberOfElements;
+let run = 1;
 
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
   let iteration = 1;
+  const startTime = Temporal.Now.plainTimeISO();
 
   const elementOptions = new FormData(document.getElementById("element-options"));
 
@@ -33,6 +35,12 @@ submitBtn.addEventListener("click", function(event) {
   }
 
   addElements();
+
+  const endTime = Temporal.Now.plainTimeISO();
+
+  addStatsData(run, numberOfElements, seed, startTime, endTime);
+  run++;
+
 });
 
 clearDataButton.addEventListener("click", function() {
@@ -42,6 +50,12 @@ clearDataButton.addEventListener("click", function() {
 downloadDataButton.addEventListener("click", function() {
   console.log("Download data button pressed.")
 });
+
+function addStatsData(run, numberOfElements1, seed, startTime, endTime) {
+  const timeTaken = startTime.until(endTime);
+  console.log("Temporal: ", timeTaken);
+  console.log("Run: ", run);
+}
 
 //Returns up to n *amount* sentences with normal distribution.
 function getRandomSentence(amount) {
