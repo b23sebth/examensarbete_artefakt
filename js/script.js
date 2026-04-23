@@ -15,7 +15,7 @@ const elements = [
 ]
 
 let stats = [];
-let csv;
+let csv = "";
 let numberOfElements;
 let run = 1;
 
@@ -48,7 +48,7 @@ submitBtn.addEventListener("click", function(event) {
 });
 
 clearDataButton.addEventListener("click", function() {
-  console.log("Clear data button pressed.")
+  console.log("Clear data button pressed.");
 
   const table = document.getElementById("stats-table");
   const tbody = table.querySelector("tbody");
@@ -63,11 +63,26 @@ clearDataButton.addEventListener("click", function() {
 });
 
 downloadDataButton.addEventListener("click", function() {
-  console.log("Download data button pressed.")
+  console.log("Download data button pressed.");
+
+  if (csv == "") {
+    alert("Please generate some data first.");
+  } else {
+    //TODO: Fixa ett faktiskt <a> element istället för <button> för bättre accessibility.
+    const blob = new Blob([csv], {type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = 'stats.csv';
+
+    a.click();
+    a.remove();
+  }
 });
 
 clearElementsButton.addEventListener("click", function() {
-  console.log("Clear elements button pressed.")
+  console.log("Clear elements button pressed.");
 
   const cards = document.getElementById("cards");
 
