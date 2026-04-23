@@ -14,6 +14,8 @@ const elements = [
   createTable
 ]
 
+let stats = [];
+let csv;
 let numberOfElements;
 let run = 1;
 
@@ -55,6 +57,8 @@ clearDataButton.addEventListener("click", function() {
     tbody.removeChild(tbody.firstChild);
   }
 
+  stats = [];
+  csv = "";
   run = 1;
 });
 
@@ -90,6 +94,15 @@ function addStatsData(run, numberOfElements, seed, startTime, endTime) {
   const table = document.getElementById("stats-table");
   const tbody = table.querySelector("tbody");
   const tr = tbody.insertRow();
+
+  stats.push([run, numberOfElements, seed, timeTakenSeconds, timeTakenMs]);
+
+  csv = "";
+  for (let i = 0; i < stats.length; i++) {
+    csv += stats[i].toString() + "\n";
+  }
+
+  console.log(csv);
 
   console.log("Temporal: ", timeTaken);
   console.log("Run: ", run);
