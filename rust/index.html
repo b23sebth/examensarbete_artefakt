@@ -16,6 +16,65 @@
 
       init().then(() => {
         console.log("Wasm loaded");
+
+        const clearDataButton = document.getElementById("clear-data-btn");
+        const downloadDataButton = document.getElementById("download-data-btn");
+        const clearElementsButton = document.getElementById("clear-elements-btn");
+
+        let stats = [];
+        let csv = "";
+        let numberOfElements;
+        let run = 1;
+
+        clearDataButton.addEventListener("click", function() {
+          console.log("Clear data button pressed.");
+
+          const table = document.getElementById("stats-table");
+          const tbody = table.querySelector("tbody");
+
+          while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
+          }
+
+          stats = [];
+          csv = "";
+          run = 1;
+        });
+
+        downloadDataButton.addEventListener("click", function() {
+          console.log("Download data button pressed.");
+
+          if (csv == "") {
+            alert("Please generate some data first.");
+          } else {
+          //TODO: Fixa ett faktiskt <a> element istället för <button> för bättre accessibility.
+          const blob = new Blob([csv], {type: "text/csv" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+
+          a.href = url;
+          a.download = 'stats.csv';
+
+          a.click();
+          a.remove();
+          }
+        });
+
+
+        clearElementsButton.addEventListener("click", function() {
+          console.log("Clear elements button pressed.");
+
+          const cards = document.getElementById("cards");
+
+          let i = 1;
+          while (cards.firstChild) {
+            cards.removeChild(cards.firstChild);
+            console.log("Removed: ", i);
+            i++;
+          }
+
+        });
+
       });
 
 		</script>
