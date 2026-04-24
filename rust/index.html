@@ -18,9 +18,52 @@
         console.log("Wasm loaded");
       });
 
-      //Testing
-      console.log(randomword(noun));
-      console.log(getRandomInt(1, 10));
 		</script>
+
+    <div id="config">
+      
+      <form method="get" id="element-options">
+        <h1>JavaScript Options</h1>
+
+        <div>
+          <label for="numberOfElements">Number of elements to create:</label>
+          <input type="number" name="numberOfElements" value="10"/>
+
+          <label for="setSeed">Seed used:</label>
+          <input id ="setSeed" type="number" name="seed" value="1"/>
+
+          <button type="submit" id="submit-btn">Generate</button>
+        </div>
+
+      </form>
+
+      <div id="stats">
+        <h1>Stats</h1>
+
+        <table id="stats-table">
+           <thead>
+            <tr>
+              <th>Run#</th>
+              <th>Elements Created</th>
+              <th>Seed used</th>
+              <th>Time taken (s)</th>
+              <th>Time taken (ms)</th>
+            </tr>
+          </thead> 
+
+          <tbody></tbody>
+        </table>
+
+        <button type="button" id="clear-data-btn">Clear data</button>
+        <button type="button" id="download-data-btn">Download data</button>
+        <button type="button" id="clear-elements-btn">Clear elements</button>
+
+
+      </div>
+
+    </div>
+
+    <div id="cards"></div>
+
 	</body>
 </html>
