@@ -14,6 +14,15 @@
 		<script type="module">
       import init, { main } from "./pkg/rust.js";
 
+      function getRandomWord() {
+        const test = randomword(noun);
+        console.log("test: ", test);
+        return test;
+      }
+      window.getRandomWord = getRandomWord;
+
+      //TODO: Gör det till en async funktion som använder await init()
+      //istället för att ha allting här
       init().then(() => {
         console.log("Wasm loaded");
 
@@ -74,6 +83,7 @@
           }
 
         });
+        console.log("main: ",main());
 
       });
 

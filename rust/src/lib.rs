@@ -6,6 +6,7 @@ use web_sys;
 #[wasm_bindgen]
 extern "C" {
     fn alert(s: &str);
+    fn getRandomWord() -> String;
 }
 
 #[wasm_bindgen]
@@ -14,7 +15,7 @@ pub fn greet(name: &str) {
 }
 
 #[wasm_bindgen]
-pub fn main() {
+pub fn main() -> String {
     let window = web_sys::window().unwrap();
     let document = window.document().unwrap();
     let body = document.body().unwrap();
@@ -27,5 +28,9 @@ pub fn main() {
 
     body.append_child(&h1).unwrap();
     body.append_child(&button1).unwrap();
+
+    let test = getRandomWord();
+    return "Hello from Rust".into();
+
 }
 
