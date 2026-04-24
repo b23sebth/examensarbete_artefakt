@@ -1,5 +1,3 @@
-const createElement = document.getElementById("createElement");
-const addFragment = document.getElementById("addFragment");
 const fragment = new DocumentFragment();
 const submitBtn = document.getElementById("submit-btn");
 const clearDataButton = document.getElementById("clear-data-btn");
