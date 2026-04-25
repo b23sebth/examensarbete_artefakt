@@ -15,16 +15,35 @@
       import init, { main } from "./pkg/rust.js";
 
       function getRandomWord() {
-        const test = randomword(noun);
-        console.log("test: ", test);
-        return test;
+        const word = randomword(noun);
+        return word;
       }
+
+      //Returns up to n *amount* sentences with normal distribution.
+      //Always at least one sentence.
+      function getRandomSentence(amount) {
+        let randomSentence = "";
+        amount = Number(amount);
+        console.log(amount);
+        console.log(typeof amount);
+
+        for (let i = 0; i < getRandomInt(1, amount + 1); i++) {
+          randomSentence += generate_sentence(true,true,true,true,true,true,true,true,true,true,true);
+        }
+
+        return randomSentence;
+      }
+
+      //These are needed for Rust to be able to access them.
       window.getRandomWord = getRandomWord;
+      window.getRandomSentence = getRandomSentence;
 
       //TODO: Gör det till en async funktion som använder await init()
       //istället för att ha allting här
       init().then(() => {
         console.log("Wasm loaded");
+
+        console.log(main());
 
         const clearDataButton = document.getElementById("clear-data-btn");
         const downloadDataButton = document.getElementById("download-data-btn");
@@ -83,7 +102,6 @@
           }
 
         });
-        console.log("main: ",main());
 
       });
 

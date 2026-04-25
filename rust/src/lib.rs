@@ -7,6 +7,7 @@ use web_sys;
 extern "C" {
     fn alert(s: &str);
     fn getRandomWord() -> String;
+    fn getRandomSentence(amount: &str) -> String;
 }
 
 #[wasm_bindgen]
@@ -30,7 +31,8 @@ pub fn main() -> String {
     body.append_child(&button1).unwrap();
 
     let test = getRandomWord();
-    return "Hello from Rust".into();
+    let test2 = getRandomSentence("1");
+    return test2;
 
 }
 
