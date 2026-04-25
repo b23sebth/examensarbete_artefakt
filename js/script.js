@@ -146,10 +146,11 @@ function addStatsData(run, numberOfElements, seed, startTime, endTime) {
 }
 
 //Returns up to n *amount* sentences with normal distribution.
+//ALways at least one sentence.
 function getRandomSentence(amount) {
   let randomSentence = "";
 
-  for (let i = 0; i < getRandomInt(0, amount + 1); i++) {
+  for (let i = 0; i < getRandomInt(1, amount + 1); i++) {
     randomSentence += generate_sentence(true,true,true,true,true,true,true,true,true,true,true);
   }
 
