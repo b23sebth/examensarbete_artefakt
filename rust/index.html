@@ -13,35 +13,23 @@
 	</head>
 	<body>
 		<script type="module">
-      import init, { main, init_json } from "./pkg/rust.js";
+      import init, { run } from "./pkg/rust.js";
 
       //TODO: Gör det till en async funktion som använder await init()
       //istället för att ha allting här
       init().then(() => {
         console.log("Wasm loaded");
 
-
         //submitBtnRust is declared in ../js/script.js
         submitBtnRust.addEventListener("click", function(event) {
           event.preventDefault();
-          main();
-
-          const elementOptions = new FormData(document.getElementById("element-options"));
-
-          numberOfElements = elementOptions.get("numberOfElements");
-          const seed = Number(elementOptions.get("seed"));
-
-          console.log(seed);
-          generateTestData(numberOfElements, seed);
-          console.log(testData);
-
-          init_json(testData);
+          run();
         });
 
         const downloadJsonButton = document.getElementById("download-json-btn");
         downloadJsonButton.addEventListener("click", function() {
           const seed = 1;
-          const elementsToCreate = 100000;
+          const elementsToCreate = 1000;
 
           generateTestData(elementsToCreate, seed);
           console.log(testData);
@@ -65,7 +53,7 @@
     <div id="config">
       
       <form method="get" id="element-options">
-        <h1>JavaScript Options</h1>
+        <h1>Rust options</h1>
 
         <div>
           <label for="numberOfElements">Number of elements to create:</label>
