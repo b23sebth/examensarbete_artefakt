@@ -23,7 +23,18 @@
         //submitBtnRust is declared in ../js/script.js
         submitBtnRust.addEventListener("click", function(event) {
           event.preventDefault();
+
+          const startTime = Temporal.Now.plainTimeISO();
+
           run();
+
+          const endTime = Temporal.Now.plainTimeISO();
+
+          let stats = [];
+          let csv = "";
+
+          //**Change this into the actual Rust values used!**
+          addStatsData(1, 10, 1, startTime, endTime);
         });
 
         const downloadJsonButton = document.getElementById("download-json-btn");
