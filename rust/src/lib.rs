@@ -35,14 +35,22 @@ pub fn run() {
     let body = document.body().unwrap();
 
     web_sys::console::log_1(&format!("Headings: {:?}", test_data.headings).into());
-    let h1 = document.create_element("h1").unwrap();
-    h1.set_text_content(Some(&test_data.headings[3]));
+    web_sys::console::log_1(&format!("Sentences: {:?}", test_data.sentences).into());
+    web_sys::console::log_1(&format!("TableData: {:?}", test_data.table_data).into());
+    web_sys::console::log_1(&format!("ImgSrc: {:?}", test_data.img_src).into());
 
-    let button1 = document.create_element("button").unwrap();
-    button1.set_text_content(Some("1+ element"));
+    //This should be the same as the number of elements in the JSON
+    let mut index: usize = 0;
+    for i in 1..=10 {
+        let newDiv = document.create_element("div").unwrap();
 
-    body.append_child(&h1).unwrap();
-    body.append_child(&button1).unwrap();
+        let h1 = document.create_element("h1").unwrap();
+        h1.set_text_content(Some(&test_data.headings[index]));
 
+        newDiv.append_child(&h1).unwrap();
+        body.append_child(&newDiv).unwrap();
+
+        index += 1;
+    }
 }
 
