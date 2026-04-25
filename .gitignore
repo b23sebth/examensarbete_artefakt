@@ -5,3 +5,4 @@ rust/Cargo.lock
 rust/bin/
 rust/pkg/
 rust/wasm-pack.log
+rust/json_files
