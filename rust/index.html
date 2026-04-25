@@ -31,12 +31,31 @@
           numberOfElements = elementOptions.get("numberOfElements");
           const seed = Number(elementOptions.get("seed"));
 
-          Math.setSeed(seed);
           console.log(seed);
-          generateTestData(numberOfElements);
+          generateTestData(numberOfElements, seed);
           console.log(testData);
 
           init_json(testData);
+        });
+
+        const downloadJsonButton = document.getElementById("download-json-btn");
+        downloadJsonButton.addEventListener("click", function() {
+          const seed = 1;
+          const elementsToCreate = 100000;
+
+          generateTestData(elementsToCreate, seed);
+          console.log(testData);
+
+          const blob = new Blob([JSON.stringify(testData, null, 2)], {type: "application/json"});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+
+          a.href = url;
+          a.download = `data_${elementsToCreate}_elements.json`;
+
+          a.click();
+          a.remove();
+
         });
 
       });
@@ -80,6 +99,7 @@
         <button type="button" id="clear-data-btn">Clear data</button>
         <button type="button" id="download-data-btn">Download data</button>
         <button type="button" id="clear-elements-btn">Clear elements</button>
+        <button type="button" id="download-json-btn">Download JSON</button>
 
 
       </div>
