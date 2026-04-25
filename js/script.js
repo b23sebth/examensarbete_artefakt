@@ -19,7 +19,7 @@ let csv = "";
 let numberOfElements;
 let run = 1;
 let testData = {
-  "headers": [],
+  "headings": [],
   "sentences": [],
   "tableData": [],
   "imgSrc": []
@@ -58,7 +58,7 @@ submitBtn.addEventListener("click", function(event) {
 
 function generateTestData(numberOfElements) {
   for (let i = 0; i < numberOfElements; i++) {
-    testData.headers.push(randomword(noun));
+    testData.headings.push(randomword(noun));
     testData.sentences.push(getRandomSentence(25));
     testData.tableData.push(randomword(noun));
     let seed = Math.random();
@@ -207,10 +207,8 @@ function createParagraph() {
 function createHeading() {
   console.log("Creating heading");
 
-  const heading = getRandomInt(1,7);
-
-  const newContent = document.createTextNode(randomword(noun));
-  const newHeading = document.createElement(`h${heading}`);
+  const newContent = document.createTextNode(testData.headings[iteration]);
+  const newHeading = document.createElement("h1");
 
   newHeading.appendChild(newContent);
 
