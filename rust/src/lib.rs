@@ -33,6 +33,8 @@ pub fn run() {
     let window = web_sys::window().unwrap();
     let document = window.document().unwrap();
     let body = document.body().unwrap();
+    let fragment = document.create_document_fragment();
+    let cards = document.get_element_by_id("cards").unwrap();
 
     web_sys::console::log_1(&format!("Headings: {:?}", test_data.headings).into());
     web_sys::console::log_1(&format!("Sentences: {:?}", test_data.sentences).into());
@@ -43,14 +45,18 @@ pub fn run() {
     let mut index: usize = 0;
     for i in 1..=10 {
         let newDiv = document.create_element("div").unwrap();
+        newDiv.set_class_name("content");
 
         let h1 = document.create_element("h1").unwrap();
         h1.set_text_content(Some(&test_data.headings[index]));
 
         newDiv.append_child(&h1).unwrap();
-        body.append_child(&newDiv).unwrap();
+
+        fragment.append_child(&newDiv).unwrap();
 
         index += 1;
     }
+
+    cards.append_child(&fragment).unwrap();
 }
 
