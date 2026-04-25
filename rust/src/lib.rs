@@ -62,15 +62,28 @@ pub fn run() {
         let tr_element = document.create_element("tr").unwrap();
         let tr: HtmlTableRowElement = tr_element.dyn_into().unwrap();
 
-        for j in 0..=number_of_columns {
-
+        for j in 0..number_of_columns {
             let td = tr.insert_cell().unwrap();
             let th = document.create_element("th").unwrap();
 
             th.set_text_content(Some(&test_data.table_data[index]));
             td.replace_with_with_node_1(&th).unwrap();
 
-            tbody.append_child(&tr).unwrap();
+            thead.append_child(&tr).unwrap();
+        }
+
+        for k in 0..10 {
+            let tr_body_element = document.create_element("tr").unwrap();
+            let tr_body: HtmlTableRowElement = tr_body_element.dyn_into().unwrap();
+
+            for l in 0..number_of_columns {
+
+            let td_body = tr_body.insert_cell().unwrap();
+            td_body.set_text_content(Some(&test_data.table_data[index]));
+            tr_body.append_child(&td_body).unwrap();
+            }
+
+            tbody.append_child(&tr_body);
         }
 
         newDiv.append_child(&h1).unwrap();
