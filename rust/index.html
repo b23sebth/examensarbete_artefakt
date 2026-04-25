@@ -13,12 +13,13 @@
 	</head>
 	<body>
 		<script type="module">
-      import init, { main } from "./pkg/rust.js";
+      import init, { main, init_json } from "./pkg/rust.js";
 
       //TODO: Gör det till en async funktion som använder await init()
       //istället för att ha allting här
       init().then(() => {
         console.log("Wasm loaded");
+
 
         //submitBtnRust is declared in ../js/script.js
         submitBtnRust.addEventListener("click", function(event) {
@@ -34,6 +35,8 @@
           console.log(seed);
           generateTestData(numberOfElements);
           console.log(testData);
+
+          init_json(testData);
         });
 
       });

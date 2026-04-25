@@ -2,6 +2,8 @@ mod utils;
 
 use wasm_bindgen::prelude::*;
 use web_sys;
+use serde::Deserialize;
+use serde_wasm_bindgen;
 
 #[wasm_bindgen]
 extern "C" {
@@ -11,6 +13,22 @@ extern "C" {
 #[wasm_bindgen]
 pub fn greet(name: &str) {
     alert(&format!("Hello, {}!", name));
+}
+
+#[derive(Deserialize)]
+struct TestData {
+    headings: Vec<String>,
+    sentences: Vec<String>,
+    #[serde(rename = "tableData")]
+    table_data: Vec<String>,
+    #[serde(rename = "imgSrc")]
+    img_src: Vec<String>,
+}
+
+#[wasm_bindgen]
+pub fn init_json(json: JsValue) {
+    let test_data: TestData = serde_wasm_bindgen::from_value(json).unwrap();
+    web_sys::console::log_1(&format!("Headings: {:?}", test_data.headings).into());
 }
 
 #[wasm_bindgen]
