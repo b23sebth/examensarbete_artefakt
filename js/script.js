@@ -220,26 +220,26 @@ function createTable() {
   console.log("Creating table");
   
   const newTable = document.createElement("table");
-  const numberofColumns = getRandomInt(2, 11)
+  const numberofColumns = 4;
   const thead = newTable.createTHead();
   const tbody = newTable.createTBody();
 
   let tr = thead.insertRow();
 
   for (let i = 0; i < numberofColumns; i++) {
-    const td = tr.insertCell(getRandomInt(0, i +1));
+    const td = tr.insertCell();
     const th = document.createElement("th");
 
-    th.appendChild(document.createTextNode(randomword(noun)));
+    th.appendChild(document.createTextNode(testData.tableData[iteration]));
     td.replaceWith(th);
   }
 
-  for (let i = 0; i < getRandomInt(1, 25); i++) {
-    tr = tbody.insertRow(getRandomInt(0, i + 1)); //Inserts row at random location in table.
+  for (let i = 0; i < 10; i++) {
+    tr = tbody.insertRow();
 
     for (let i2 = 0; i2 < numberofColumns; i2++) {
-      const td = tr.insertCell(getRandomInt(0, i2 + 1));
-      td.appendChild(document.createTextNode(randomword(noun)));
+      const td = tr.insertCell();
+      td.appendChild(document.createTextNode(testData.tableData[iteration]));
     }
   }
 
