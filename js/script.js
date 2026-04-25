@@ -29,9 +29,7 @@ if (submitBtn) {
     numberOfElements = elementOptions.get("numberOfElements");
     const seed = Number(elementOptions.get("seed"));
 
-    Math.setSeed(seed);
-
-    generateTestData(numberOfElements);
+    generateTestData(numberOfElements, seed);
     console.log("testData: ", testData);
 
     const startTime = Temporal.Now.plainTimeISO();
@@ -55,13 +53,14 @@ if (submitBtn) {
   submitBtnRust = document.getElementById("submit-btn-rust");
 }
 
-function generateTestData(numberOfElements) {
+function generateTestData(numberOfElements, seed) {
   for (let i = 0; i < numberOfElements; i++) {
+    Math.setSeed(seed + i);
     testData.headings.push(randomword(noun));
     testData.sentences.push(getRandomSentence(25));
     testData.tableData.push(randomword(noun));
-    let seed = Math.random();
-    testData.imgSrc.push(`https://picsum.photos/seed/${seed}/300`);
+    let photoSeed = Math.random();
+    testData.imgSrc.push(`https://picsum.photos/seed/${photoSeed}/300`);
   }
 }
 
