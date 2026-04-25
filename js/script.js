@@ -6,14 +6,6 @@ const clearElementsButton = document.getElementById("clear-elements-btn");
 
 //The variable noun used as a parameter for randomwword() is in the global scope from contextfreegrammar.
 
-// Array so created element can be randomly chosen. 
-const elements = [
-  createHeading,
-  createParagraph,
-  createIMG,
-  createTable
-]
-
 let stats = [];
 let csv = "";
 let numberOfElements;
@@ -185,9 +177,15 @@ function createDiv() {
 	const newDiv = document.createElement("div");
   newDiv.className = "content";
 
-  for (let i = 0; i < getRandomInt(1,11); i++) {
-    newDiv.appendChild(elements[getRandomInt(0, 4)]());
-  }
+  const newHeading = createHeading();
+  const newParagraph = createParagraph();
+  const newTable = createTable();
+  const newIMG = createIMG();
+
+  newDiv.appendChild(newHeading);
+  newDiv.appendChild(newParagraph);
+  newDiv.appendChild(newIMG);
+  newDiv.appendChild(newTable);
 
   //TODO: Borde returnera en div likt andra element. Justera fragment borde göras i eventlyssnaren.
 	fragment.appendChild(newDiv);
