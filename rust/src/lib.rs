@@ -6,8 +6,6 @@ use web_sys;
 #[wasm_bindgen]
 extern "C" {
     fn alert(s: &str);
-    fn getRandomWord() -> String;
-    fn getRandomSentence(amount: &str) -> String;
 }
 
 #[wasm_bindgen]
@@ -16,7 +14,7 @@ pub fn greet(name: &str) {
 }
 
 #[wasm_bindgen]
-pub fn main() -> String {
+pub fn main() {
     let window = web_sys::window().unwrap();
     let document = window.document().unwrap();
     let body = document.body().unwrap();
@@ -29,10 +27,5 @@ pub fn main() -> String {
 
     body.append_child(&h1).unwrap();
     body.append_child(&button1).unwrap();
-
-    let test = getRandomWord();
-    let test2 = getRandomSentence("1");
-    return test2;
-
 }
 

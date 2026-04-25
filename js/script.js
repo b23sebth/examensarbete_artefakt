@@ -18,35 +18,42 @@ let testData = {
 };
 
 let iteration = 0;
-submitBtn.addEventListener("click", function(event) {
-  event.preventDefault();
+let submitBtnRust;
 
-  const elementOptions = new FormData(document.getElementById("element-options"));
+if (submitBtn) {
+  submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
 
-  numberOfElements = elementOptions.get("numberOfElements");
-  const seed = Number(elementOptions.get("seed"));
+    const elementOptions = new FormData(document.getElementById("element-options"));
 
-  Math.setSeed(seed);
+    numberOfElements = elementOptions.get("numberOfElements");
+    const seed = Number(elementOptions.get("seed"));
 
-  generateTestData(numberOfElements);
-  console.log("testData: ", testData);
+    Math.setSeed(seed);
 
-  const startTime = Temporal.Now.plainTimeISO();
+    generateTestData(numberOfElements);
+    console.log("testData: ", testData);
 
-  for(let i = 0; i < numberOfElements; i++) {
-    createDiv();
-    iteration++;
-    console.log("Created Divs: ", i + 1);
-  }
+    const startTime = Temporal.Now.plainTimeISO();
 
-  addElements();
+    for(let i = 0; i < numberOfElements; i++) {
+      createDiv();
+      iteration++;
+      console.log("Created Divs: ", i + 1);
+    }
 
-  const endTime = Temporal.Now.plainTimeISO();
+    addElements();
 
-  addStatsData(run, numberOfElements, seed, startTime, endTime);
-  run++;
+    const endTime = Temporal.Now.plainTimeISO();
 
-});
+    addStatsData(run, numberOfElements, seed, startTime, endTime);
+    run++;
+
+  });
+} else {
+  // This enables me to reuse most of the JS for the Rust part.
+  submitBtnRust = document.getElementById("submit-btn-rust");
+}
 
 function generateTestData(numberOfElements) {
   for (let i = 0; i < numberOfElements; i++) {
