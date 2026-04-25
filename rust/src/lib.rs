@@ -1,7 +1,7 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
-use web_sys;
+use web_sys::{ HtmlTableElement, HtmlTableRowElement };
 use serde::Deserialize;
 use serde_json::from_str;
 
@@ -53,8 +53,29 @@ pub fn run() {
         let p = document.create_element("p").unwrap();
         p.set_text_content(Some(&test_data.sentences[index]));
 
+        let table_element = document.create_element("table").unwrap();
+        let table: HtmlTableElement = table_element.dyn_into().unwrap();
+        let number_of_columns = 4;
+        let thead = table.create_t_head();
+        let tbody = table.create_t_body();
+
+        let tr_element = document.create_element("tr").unwrap();
+        let tr: HtmlTableRowElement = tr_element.dyn_into().unwrap();
+
+        for j in 0..=number_of_columns {
+
+            let td = tr.insert_cell().unwrap();
+            let th = document.create_element("th").unwrap();
+
+            th.set_text_content(Some(&test_data.table_data[index]));
+            td.replace_with_with_node_1(&th).unwrap();
+
+            tbody.append_child(&tr).unwrap();
+        }
+
         newDiv.append_child(&h1).unwrap();
         newDiv.append_child(&p).unwrap();
+        newDiv.append_child(&table).unwrap();
 
         fragment.append_child(&newDiv).unwrap();
 
