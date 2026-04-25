@@ -50,7 +50,11 @@ pub fn run() {
         let h1 = document.create_element("h1").unwrap();
         h1.set_text_content(Some(&test_data.headings[index]));
 
+        let p = document.create_element("p").unwrap();
+        p.set_text_content(Some(&test_data.sentences[index]));
+
         newDiv.append_child(&h1).unwrap();
+        newDiv.append_child(&p).unwrap();
 
         fragment.append_child(&newDiv).unwrap();
 
