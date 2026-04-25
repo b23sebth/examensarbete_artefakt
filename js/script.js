@@ -4,6 +4,8 @@ const clearDataButton = document.getElementById("clear-data-btn");
 const downloadDataButton = document.getElementById("download-data-btn");
 const clearElementsButton = document.getElementById("clear-elements-btn");
 
+//The variable noun used as a parameter for randomwword() is in the global scope from contextfreegrammar.
+
 // Array so created element can be randomly chosen. 
 const elements = [
   createHeading,
@@ -16,6 +18,12 @@ let stats = [];
 let csv = "";
 let numberOfElements;
 let run = 1;
+let testData = {
+  "headers": [],
+  "sentences": [],
+  "tableData": [],
+  "imgSrc": []
+};
 
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
@@ -36,6 +44,9 @@ submitBtn.addEventListener("click", function(event) {
     console.log("Created Divs: ", i + 1);
   }
 
+  generateTestData(numberOfElements);
+  console.log("testData: ", testData);
+
   addElements();
 
   const endTime = Temporal.Now.plainTimeISO();
@@ -44,6 +55,16 @@ submitBtn.addEventListener("click", function(event) {
   run++;
 
 });
+
+function generateTestData(numberOfElements) {
+  for (let i = 0; i < numberOfElements; i++) {
+    testData.headers.push(randomword(noun));
+    testData.sentences.push(getRandomSentence(25));
+    testData.tableData.push(randomword(noun));
+    let seed = Math.random();
+    testData.imgSrc.push(`https://picsum.photos/seed/${seed}/300`);
+  }
+}
 
 clearDataButton.addEventListener("click", function() {
   console.log("Clear data button pressed.");
