@@ -25,27 +25,27 @@ let testData = {
   "imgSrc": []
 };
 
+let iteration = 0;
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
-
-  let iteration = 1;
-  const startTime = Temporal.Now.plainTimeISO();
 
   const elementOptions = new FormData(document.getElementById("element-options"));
 
   numberOfElements = elementOptions.get("numberOfElements");
   const seed = Number(elementOptions.get("seed"));
 
+  Math.setSeed(seed);
+
+  generateTestData(numberOfElements);
+  console.log("testData: ", testData);
+
+  const startTime = Temporal.Now.plainTimeISO();
 
   for(let i = 0; i < numberOfElements; i++) {
-    Math.setSeed(seed + iteration);
     createDiv();
     iteration++;
     console.log("Created Divs: ", i + 1);
   }
-
-  generateTestData(numberOfElements);
-  console.log("testData: ", testData);
 
   addElements();
 
@@ -197,7 +197,7 @@ function createParagraph() {
   console.log("Creating paragraph");
 
   const newParagraph = document.createElement("p");
-  const newContent = document.createTextNode(getRandomSentence(25));
+  const newContent = document.createTextNode(testData.sentences[iteration]);
 
   newParagraph.appendChild(newContent);
 
