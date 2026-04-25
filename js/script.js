@@ -250,8 +250,8 @@ function createIMG() {
   console.log("Creating random image")
 
   let img = document.createElement("img");
-  let seed = Math.random();
-  img.setAttribute("src", `https://picsum.photos/seed/${seed}/300`);
+  let src = testData.imgSrc[iteration];
+  img.setAttribute("src", src);
 
   return img;
 }
