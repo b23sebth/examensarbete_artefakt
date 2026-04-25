@@ -86,8 +86,13 @@ pub fn run() {
             tbody.append_child(&tr_body);
         }
 
+        let img = document.create_element("img").unwrap();
+        let src = &test_data.img_src[index];
+        img.set_attribute("src", src);
+
         newDiv.append_child(&h1).unwrap();
         newDiv.append_child(&p).unwrap();
+        newDiv.append_child(&img).unwrap();
         newDiv.append_child(&table).unwrap();
 
         fragment.append_child(&newDiv).unwrap();
