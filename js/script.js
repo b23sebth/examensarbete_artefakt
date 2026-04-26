@@ -30,14 +30,12 @@ if (submitBtn) {
     const seed = Number(elementOptions.get("seed"));
 
     generateTestData(numberOfElements, seed);
-    console.log("testData: ", testData);
 
     const startTime = Temporal.Now.plainTimeISO();
 
     for(let i = 0; i < numberOfElements; i++) {
       createDiv();
       iteration++;
-      console.log("Created Divs: ", i + 1);
     }
 
     addElements();
@@ -134,11 +132,6 @@ function addStatsData(run, numberOfElements, seed, startTime, endTime) {
     csv += stats[i].toString() + "\n";
   }
 
-  console.log(csv);
-
-  console.log("Temporal: ", timeTaken);
-  console.log("Run: ", run);
-
   let td;
   let data;
 
@@ -178,8 +171,6 @@ function getRandomSentence(amount) {
 
 // Fills a div with 1-10 random elements.
 function createDiv() {
-  console.log("Creating Div");
-
 	const newDiv = document.createElement("div");
   newDiv.className = "content";
 
@@ -198,8 +189,6 @@ function createDiv() {
 }
 
 function createParagraph() {
-  console.log("Creating paragraph");
-
   const newParagraph = document.createElement("p");
   const newContent = document.createTextNode(testData.sentences[iteration]);
 
@@ -209,8 +198,6 @@ function createParagraph() {
 }
 
 function createHeading() {
-  console.log("Creating heading");
-
   const newContent = document.createTextNode(testData.headings[iteration]);
   const newHeading = document.createElement("h1");
 
@@ -221,8 +208,6 @@ function createHeading() {
 
 // Creates a table with random amount of rows and cells
 function createTable() {
-  console.log("Creating table");
-  
   const newTable = document.createElement("table");
   const numberofColumns = 4;
   const thead = newTable.createTHead();
@@ -251,8 +236,6 @@ function createTable() {
 }
 
 function createIMG() {
-  console.log("Creating random image")
-
   let img = document.createElement("img");
   let src = testData.imgSrc[iteration];
   img.setAttribute("src", src);
