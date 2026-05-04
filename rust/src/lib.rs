@@ -36,14 +36,14 @@ pub fn start() {
     let fragment = document.create_document_fragment();
     let cards = document.get_element_by_id("cards").unwrap();
 
-    web_sys::console::log_1(&format!("Headings: {:?}", test_data.headings).into());
-    web_sys::console::log_1(&format!("Sentences: {:?}", test_data.sentences).into());
-    web_sys::console::log_1(&format!("TableData: {:?}", test_data.table_data).into());
-    web_sys::console::log_1(&format!("ImgSrc: {:?}", test_data.img_src).into());
+    //web_sys::console::log_1(&format!("Headings: {:?}", test_data.headings).into());
+    //web_sys::console::log_1(&format!("Sentences: {:?}", test_data.sentences).into());
+    //web_sys::console::log_1(&format!("TableData: {:?}", test_data.table_data).into());
+    //web_sys::console::log_1(&format!("ImgSrc: {:?}", test_data.img_src).into());
 
-    //This should be the same as the number of elements in the JSON
     let mut index: usize = 0;
-    for i in 1..=10 {
+    //This should be the same as the number of elements in the JSON
+    for i in 1..=1000 {
         let newDiv = document.create_element("div").unwrap();
         newDiv.set_class_name("content");
 
