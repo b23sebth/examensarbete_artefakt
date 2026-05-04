@@ -85,7 +85,7 @@ button:hover {
     background-color: #FF66B9;
 }
 
-form {
+form, #rust-version {
   display: flex;
   flex-direction: column;
   border-radius: 5px;

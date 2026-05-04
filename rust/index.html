@@ -39,6 +39,8 @@
 
         const downloadJsonButton = document.getElementById("download-json-btn");
         downloadJsonButton.addEventListener("click", function() {
+
+          //Set seed and how many elements should be created, then download via "Download JSON" button.
           const seed = 1;
           const elementsToCreate = 1000;
 
@@ -64,14 +66,14 @@
     <div id="config">
       
       <form method="get" id="element-options">
-        <h1>Rust options</h1>
+        <h1>Rust Version</h1>
 
         <div>
-          <label for="numberOfElements">Number of elements to create:</label>
-          <input type="number" name="numberOfElements" value="10"/>
-
-          <label for="setSeed">Seed used:</label>
-          <input id ="setSeed" type="number" name="seed" value="1"/>
+          <p>The Rust version of the program needs to be changed manually.</p>
+          <div>
+            <label for="autoDownload">Autodownload?</label>
+            <input id ="autoDownload" type="checkbox" name="autoDownload"/>
+          </div>
 
           <button type="submit" id="submit-btn-rust">Generate</button>
         </div>
