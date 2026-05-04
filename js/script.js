@@ -105,7 +105,9 @@ function downloadData() {
   }
 };
 
-clearElementsButton.addEventListener("click", function() {
+clearElementsButton.addEventListener("click", clearElements);
+
+function clearElements() {
   console.log("Clear elements button pressed.");
 
   const cards = document.getElementById("cards");
@@ -121,7 +123,7 @@ clearElementsButton.addEventListener("click", function() {
     //elements[i].remove();
     //console.log("Removed: ", i);
   //}
-});
+};
 
 function addStatsData(run, numberOfElements, seed, startTime, endTime) {
   const timeTaken = startTime.until(endTime);
