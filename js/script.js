@@ -84,7 +84,9 @@ function clearData() {
   run = 1;
 };
 
-downloadDataButton.addEventListener("click", function() {
+downloadDataButton.addEventListener("click", downloadData);
+
+function downloadData() {
   console.log("Download data button pressed.");
 
   if (csv == "") {
@@ -101,7 +103,7 @@ downloadDataButton.addEventListener("click", function() {
     a.click();
     a.remove();
   }
-});
+};
 
 clearElementsButton.addEventListener("click", function() {
   console.log("Clear elements button pressed.");
