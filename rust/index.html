@@ -29,10 +29,14 @@
       init().then(() => {
         console.log("Wasm loaded");
 
+        let autoDownloadRust;
 
         //submitBtnRust is declared in ../js/script.js
         submitBtnRust.addEventListener("click", function(event) {
           event.preventDefault();
+
+
+          autoDownloadRust = document.getElementById("autoDownloadRust").checked;
 
           let run = 1;
 
@@ -48,7 +52,7 @@
             run++;
           }
 
-          if (autoDownload)downloadData();
+          if (autoDownloadRust) downloadData();
 
         });
 
@@ -70,21 +74,23 @@
 
         });
 
+        const checkbox = document.getElementById("rust-options-checkbox");
+
         const rustOptionsParagraph1 = document.createElement("p");
         const rustOptionsParagraph2 = document.createElement("p");
         const rustOptionsParagraph3 = document.createElement("p");
 
         let rustOptionsText = document.createTextNode(`Elements: ${elementsToCreate}`);
         rustOptionsParagraph1.appendChild(rustOptionsText);
-        rustOptions.appendChild(rustOptionsParagraph1);
+        rustOptions.insertBefore(rustOptionsParagraph1, checkbox);
 
         rustOptionsText = document.createTextNode(`Seed: ${seed}`);
         rustOptionsParagraph2.appendChild(rustOptionsText);
-        rustOptions.appendChild(rustOptionsParagraph2);
+        rustOptions.insertBefore(rustOptionsParagraph2, checkbox);
 
         rustOptionsText = document.createTextNode(`Runs: ${runs}`);
         rustOptionsParagraph3.appendChild(rustOptionsText);
-        rustOptions.appendChild(rustOptionsParagraph3);
+        rustOptions.insertBefore(rustOptionsParagraph3, checkbox);
       });
 
 		</script>
@@ -96,12 +102,12 @@
 
         <div>
           <p>The Rust version of the program needs to be changed manually.</p>
-          <div>
-            <label for="autoDownload">Autodownload?</label>
-            <input id ="autoDownload" type="checkbox" name="autoDownload"/>
-          </div>
           <div id="rust-options">
             <h2>Current options:</h2>
+            <div id="rust-options-checkbox">
+              <label for="autoDownloadRust">Autodownload?</label>
+              <input id ="autoDownloadRust" type="checkbox" name="autoDownloadRust"/>
+            </div>
           </div>
 
           <button type="submit" id="submit-btn-rust">Generate</button>
