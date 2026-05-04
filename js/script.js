@@ -29,7 +29,7 @@ if (submitBtn) {
     numberOfElements = elementOptions.get("numberOfElements");
     const seed = Number(elementOptions.get("seed"));
     const runs = Number(elementOptions.get("runs"));
-    console.log("runs: ", runs);
+    const autoDownload = document.getElementById("autoDownload").checked;
 
     generateTestData(numberOfElements, seed);
 
@@ -49,6 +49,8 @@ if (submitBtn) {
       addStatsData(run, numberOfElements, seed, startTime, endTime);
       run++;
     }
+
+    if (autoDownload) downloadData();
 
   });
 } else {
