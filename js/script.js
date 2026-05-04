@@ -28,22 +28,27 @@ if (submitBtn) {
 
     numberOfElements = elementOptions.get("numberOfElements");
     const seed = Number(elementOptions.get("seed"));
+    const runs = Number(elementOptions.get("runs"));
+    console.log("runs: ", runs);
 
     generateTestData(numberOfElements, seed);
 
-    const startTime = Temporal.Now.plainTimeISO();
+    for (let i = 0; i < runs; i++) {
+      const startTime = Temporal.Now.plainTimeISO();
+      iteration = 0;
 
-    for(let i = 0; i < numberOfElements; i++) {
-      createDiv();
-      iteration++;
+      for(let i2 = 0; i2 < numberOfElements; i2++) {
+        createDiv();
+        iteration++;
+      }
+
+      addElements();
+
+      const endTime = Temporal.Now.plainTimeISO();
+
+      addStatsData(run, numberOfElements, seed, startTime, endTime);
+      run++;
     }
-
-    addElements();
-
-    const endTime = Temporal.Now.plainTimeISO();
-
-    addStatsData(run, numberOfElements, seed, startTime, endTime);
-    run++;
 
   });
 } else {
@@ -101,11 +106,8 @@ clearElementsButton.addEventListener("click", function() {
 
   const cards = document.getElementById("cards");
 
-  let i = 1;
   while (cards.firstChild) {
     cards.removeChild(cards.firstChild);
-    console.log("Removed: ", i);
-    i++;
   }
 
   //Den här implementationen tar mycket längre tid, vad beror det på? Kanske kan vara intressant för att jämföra Rust/JS ytterliggare.
