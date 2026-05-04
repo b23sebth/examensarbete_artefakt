@@ -15,6 +15,8 @@
 		<script type="module">
       import init, { start } from "./pkg/rust.js";
 
+      const rustOptions = document.getElementById("rust-options");
+
       let stats = [];
       let csv = "";
 
@@ -68,6 +70,21 @@
 
         });
 
+        const rustOptionsParagraph1 = document.createElement("p");
+        const rustOptionsParagraph2 = document.createElement("p");
+        const rustOptionsParagraph3 = document.createElement("p");
+
+        let rustOptionsText = document.createTextNode(`Elements: ${elementsToCreate}`);
+        rustOptionsParagraph1.appendChild(rustOptionsText);
+        rustOptions.appendChild(rustOptionsParagraph1);
+
+        rustOptionsText = document.createTextNode(`Seed: ${seed}`);
+        rustOptionsParagraph2.appendChild(rustOptionsText);
+        rustOptions.appendChild(rustOptionsParagraph2);
+
+        rustOptionsText = document.createTextNode(`Runs: ${runs}`);
+        rustOptionsParagraph3.appendChild(rustOptionsText);
+        rustOptions.appendChild(rustOptionsParagraph3);
       });
 
 		</script>
@@ -82,6 +99,9 @@
           <div>
             <label for="autoDownload">Autodownload?</label>
             <input id ="autoDownload" type="checkbox" name="autoDownload"/>
+          </div>
+          <div id="rust-options">
+            <h2>Current options:</h2>
           </div>
 
           <button type="submit" id="submit-btn-rust">Generate</button>

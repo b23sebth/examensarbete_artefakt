@@ -17,7 +17,7 @@
 
   & > div, form {margin: 10px;}
 
-  & h1 {color: var(--dark-accent-color);}
+  & h1, h2 {color: var(--dark-accent-color);}
 }
 
 #stats {
