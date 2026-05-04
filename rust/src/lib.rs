@@ -26,8 +26,8 @@ struct TestData {
 }
 
 #[wasm_bindgen]
-pub fn run() {
-    let json = include_str!("../json_files/data_100_elements.json");
+pub fn start() {
+    let json = include_str!("../json_files/data_1000_elements.json");
     let test_data: TestData = from_str(&json).unwrap();
 
     let window = web_sys::window().unwrap();
