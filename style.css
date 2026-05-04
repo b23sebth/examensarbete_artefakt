@@ -94,6 +94,7 @@ form, #rust-version {
   width: fit-content;
   min-width: 400px;
   box-sizing: border-box;
+  max-width: 500px;
 
   & > div {
     display: flex;
