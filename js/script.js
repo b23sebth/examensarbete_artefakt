@@ -67,7 +67,9 @@ function generateTestData(numberOfElements, seed) {
   }
 }
 
-clearDataButton.addEventListener("click", function() {
+clearDataButton.addEventListener("click", clearData);
+
+function clearData() {
   console.log("Clear data button pressed.");
 
   const table = document.getElementById("stats-table");
@@ -80,7 +82,7 @@ clearDataButton.addEventListener("click", function() {
   stats = [];
   csv = "";
   run = 1;
-});
+};
 
 downloadDataButton.addEventListener("click", function() {
   console.log("Download data button pressed.");
