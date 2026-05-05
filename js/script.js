@@ -19,6 +19,7 @@ let testData = {
 
 let iteration = 0;
 let submitBtnRust;
+let autoDownload;
 
 if (submitBtn) {
   submitBtn.addEventListener("click", function(event) {
@@ -29,7 +30,7 @@ if (submitBtn) {
     numberOfElements = elementOptions.get("numberOfElements");
     const seed = Number(elementOptions.get("seed"));
     const runs = Number(elementOptions.get("runs"));
-    const autoDownload = document.getElementById("autoDownload").checked;
+    autoDownload = document.getElementById("autoDownload").checked;
 
     generateTestData(numberOfElements, seed);
 
