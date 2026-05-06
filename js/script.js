@@ -18,6 +18,7 @@ let testData = {
 };
 
 let interpreter;
+let createdElements;
 
 //Very simple check for which browser is used.
 if (navigator.userAgent.indexOf("Firefox") != -1) {
@@ -60,6 +61,7 @@ if (submitBtn) {
       addElements();
 
       const endTime = Temporal.Now.plainTimeISO();
+      createdElements = numberOfElements;
 
       addStatsData(run, numberOfElements, seed, startTime, endTime);
       run++;
@@ -114,7 +116,7 @@ function downloadData() {
     const a = document.createElement("a");
 
     a.href = url;
-    a.download = `${interpreter}_stats.csv`;
+    a.download = `${interpreter}_${createdElements}_elements_stats.csv`;
 
     a.click();
     a.remove();
