@@ -19,6 +19,7 @@ let testData = {
 
 let interpreter;
 let createdElements;
+let version;
 
 //Very simple check for which browser is used.
 if (navigator.userAgent.indexOf("Firefox") != -1) {
@@ -62,6 +63,7 @@ if (submitBtn) {
 
       const endTime = Temporal.Now.plainTimeISO();
       createdElements = numberOfElements;
+      version = "javascript";
 
       addStatsData(run, numberOfElements, seed, startTime, endTime);
       run++;
@@ -116,7 +118,7 @@ function downloadData() {
     const a = document.createElement("a");
 
     a.href = url;
-    a.download = `${interpreter}_${createdElements}_elements_stats.csv`;
+    a.download = `${version}_${interpreter}_${createdElements}_elements_stats.csv`;
 
     a.click();
     a.remove();
