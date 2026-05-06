@@ -17,6 +17,20 @@ let testData = {
   "imgSrc": []
 };
 
+let interpreter;
+
+//Very simple check for which browser is used.
+if (navigator.userAgent.indexOf("Firefox") != -1) {
+  console.log("Interpreter used: Gecko (Mozilla)");
+  interpreter = "Gecko";
+} else if (navigator.userAgent.indexOf("Chrome") != -1) {
+  console.log("Interpreter used: V8 (Google)");
+  interpreter = "Chrome";
+} else {
+  console.log("Browser used: Unknown");
+  interpreter = "unknown";
+}
+
 let iteration = 0;
 let submitBtnRust;
 let autoDownload;
@@ -100,7 +114,7 @@ function downloadData() {
     const a = document.createElement("a");
 
     a.href = url;
-    a.download = 'stats.csv';
+    a.download = `${interpreter}_stats.csv`;
 
     a.click();
     a.remove();
