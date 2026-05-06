@@ -27,7 +27,7 @@ if (navigator.userAgent.indexOf("Firefox") != -1) {
   interpreter = "Gecko";
 } else if (navigator.userAgent.indexOf("Chrome") != -1) {
   console.log("Interpreter used: V8 (Google)");
-  interpreter = "Chrome";
+  interpreter = "V8";
 } else {
   console.log("Browser used: Unknown");
   interpreter = "unknown";
