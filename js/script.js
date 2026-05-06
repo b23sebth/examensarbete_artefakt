@@ -95,7 +95,6 @@ function downloadData() {
   if (csv == "") {
     alert("Please generate some data first.");
   } else {
-    //TODO: Fixa ett faktiskt <a> element istället för <button> för bättre accessibility.
     const blob = new Blob([csv], {type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -118,14 +117,6 @@ function clearElements() {
   while (cards.firstChild) {
     cards.removeChild(cards.firstChild);
   }
-
-  //Den här implementationen tar mycket längre tid, vad beror det på? Kanske kan vara intressant för att jämföra Rust/JS ytterliggare.
-  //Loops through elements backwards.
-  //const elements = document.getElementsByClassName("content");
-  //for (let i = elements.length -1; i >= 0; i--) {
-    //elements[i].remove();
-    //console.log("Removed: ", i);
-  //}
 };
 
 function addStatsData(run, numberOfElements, seed, startTime, endTime) {
@@ -146,7 +137,6 @@ function addStatsData(run, numberOfElements, seed, startTime, endTime) {
   let td;
   let data;
 
-  //TODO: Lös det här bättre. För mycket upprepning..
   td = tr.insertCell();
   data = document.createTextNode(run);
   td.appendChild(data);
@@ -195,7 +185,6 @@ function createDiv() {
   newDiv.appendChild(newIMG);
   newDiv.appendChild(newTable);
 
-  //TODO: Borde returnera en div likt andra element. Justera fragment borde göras i eventlyssnaren.
 	fragment.appendChild(newDiv);
 }
 

@@ -20,12 +20,11 @@
       let stats = [];
       let csv = "";
 
+      //Change settings here and then download/generate after changing the Rust code.
       const seed = 1;
-      const elementsToCreate = 1000; //How many elements that should be created, download via "Download JSON" button
-      const runs = 10; //Number of runs:
+      const elementsToCreate = 1000;
+      const runs = 10;
 
-      //TODO: Gör det till en async funktion som använder await init()
-      //istället för att ha allting här
       init().then(() => {
         console.log("Wasm loaded");
 
